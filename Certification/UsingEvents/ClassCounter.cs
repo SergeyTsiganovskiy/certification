@@ -26,3 +26,5 @@ namespace UsingEvents
         }
     }
 }
+
+// Publisher-subsriber approach is used to establish LOOSE COUPLING between components in an application.

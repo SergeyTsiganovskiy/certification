@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Channels;
 using UnderstandingDelegates;
 using UsingEvents;
 
@@ -37,6 +38,10 @@ namespace Sandbox
             //{
             //    item("foreach");
             //}
+
+            //Counter(1, 2, DelegateEventsDemo.GetFeedBackDelegate());
+            //Console.ReadLine();
+
             #endregion
 
 
@@ -57,14 +62,37 @@ namespace Sandbox
 
             //    Класс, в котором вы создаете событие(генерируете) называется классом-издателем, а классы, чьи методы подписываются на это событие при помощи "+=" — классами - подписчиками.
 
-            ClassCounter Counter = new ClassCounter();
-            Handler_I Handler1 = new Handler_I();
-            Handler_II Handler2 = new Handler_II();
+            //ClassCounter Counter = new ClassCounter();
+            //Handler_I Handler1 = new Handler_I();
+            //Handler_II Handler2 = new Handler_II();
 
-            Counter.OnCount += Handler1.Message;
-            Counter.OnCount += Handler2.Message;
+            //Counter.OnCount += Handler1.Message;
+            //Counter.OnCount += Handler2.Message;
 
-            Counter.Count();
+            //Counter.Count();
+
+            //Pub pub =new Pub();
+            //pub.OnChange += () => Console.WriteLine("Message event outside");
+            //pub.Raise();
+
+            //Pub2 pub2 = new Pub2();
+            //pub2.OnChange += (sender, e) => Console.WriteLine("Event raised: {0}", e.Value);
+            ////pub2.OnChangeEmpty += (sender, null) => Console.WriteLine("Event raised: {0}");
+
+            //pub2.Raise();
+
+            //Pub4InvocationList pub4 = new Pub4InvocationList();
+            //pub4.OnChange += (sender, e) => Console.WriteLine("Subscriber 1 called");
+            //pub4.OnChange += (sender, e) => { throw new Exception(); };
+            //pub4.OnChange += (sender, e) => Console.WriteLine("Subscriber 3 called");
+            //try
+            //{
+            //    pub4.Raise();
+            //}
+            //catch (AggregateException ex)
+            //{
+            //    Console.WriteLine(ex.InnerExceptions.Count);
+            //}
             #endregion
 
         }
@@ -73,6 +101,17 @@ namespace Sandbox
         {
             Console.WriteLine("Test Lambda Method");
             act();
+        }
+
+        private static void Counter(int p1, int p2, FeedBack feedBack)
+        {
+            for (int i = p1; i <= p2; i++)
+            {
+                if (feedBack != null)
+                {
+                    feedBack(i);
+                }
+            }
         }
     }
 }
