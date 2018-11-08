@@ -93,6 +93,16 @@ namespace Sandbox
             //{
             //    Console.WriteLine(ex.InnerExceptions.Count);
             //}
+
+            //EventProgram obj1 = new EventProgram();
+            //string result = obj1.WelcomeUser("Tutorials Point");
+            //Console.WriteLine(result);
+            //Console.ReadKey();
+
+            Person person = new Person("Ann");
+            person.IsChanged += n => n.Equals(person.Name);
+            person.Name = "Ann";
+            Console.ReadKey();
             #endregion
 
         }
