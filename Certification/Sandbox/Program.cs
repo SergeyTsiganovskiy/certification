@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Runtime.Remoting.Channels;
+using System.IO;
+using System.Text;
 using UnderstandingDelegates;
-using UsingEvents;
 
 namespace Sandbox
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             #region Understanding delegates
@@ -99,10 +99,54 @@ namespace Sandbox
             //Console.WriteLine(result);
             //Console.ReadKey();
 
-            Person person = new Person("Ann");
-            person.IsChanged += n => n.Equals(person.Name);
-            person.Name = "Ann";
-            Console.ReadKey();
+            //Person person = new Person("Ann");
+            //person.IsChanged += n => n.Equals(person.Name);
+            //person.Name = "Ann";
+            //Console.ReadKey();
+            #endregion
+
+            #region Performe IO operations
+
+            string temp = Path.GetRandomFileName();
+
+            string path = @"c:\temp\test.dat";
+            using (FileStream fileStream = File.Create(path))
+            {
+                string myValue = "MyValue";
+                byte[] data = Encoding.UTF8.GetBytes(myValue);
+                fileStream.Write(data, 0, data.Length);
+            }
+
+
+            string path1 = @"c:\temp\test.dat";
+            using (StreamWriter streamWriter = File.CreateText(path1))
+            {
+                string myValue = "MyValue";
+                streamWriter.Write(myValue);
+            }
+
+
+            using (FileStream fileStream = File.OpenRead(path))
+            {
+                byte[] data = new byte[fileStream.Length];
+                for (int index = 0; index < fileStream.Length; index++)
+                {
+                    data[index] = (byte)fileStream.ReadByte();
+                }
+                Console.WriteLine(Encoding.UTF8.GetString(data)); // Displays: MyValue
+            }
+
+            using (FileStream fileStream = File.Create(path))
+            {
+                using (BufferedStream bufferedStream = new BufferedStream(fileStream))
+                {
+                    using (StreamWriter streamWriter = new StreamWriter(bufferedStream))
+                    {
+                        streamWriter.WriteLine(path);
+                    }
+                }
+            }
+
             #endregion
 
         }

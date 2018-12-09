@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5E748B9-6F55-446F-B7CC-E412476C7C90}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Sandbox</RootNamespace>
-    <AssemblyName>Sandbox</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ProjectGuid>{B316EEBA-32BD-4F45-8E51-4EAEADA1F863}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PerformeIOoperations</RootNamespace>
+    <AssemblyName>PerformeIOoperations</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,33 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="WorkingWithDirectories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PerformeIOoperations\PerformeIOoperations.csproj">
-      <Project>{b316eeba-32bd-4f45-8e51-4eaeada1f863}</Project>
-      <Name>PerformeIOoperations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Test\Test.csproj">
-      <Project>{660cf3e0-ee80-45c8-ba4b-cea45849e5df}</Project>
-      <Name>Test</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UnderstandingDelegates\UnderstandingDelegates.csproj">
-      <Project>{fc5a6455-cb7a-4127-aca5-01ff929e3638}</Project>
-      <Name>UnderstandingDelegates</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UsingEvents\UsingEvents.csproj">
-      <Project>{9CC11764-3AEF-40B3-B35B-1E1C8E7272AB}</Project>
-      <Name>UsingEvents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UsingLambdaExpression\UsingLambdaExpression.csproj">
-      <Project>{06573e56-d7b9-4db9-b3db-81caa80d000d}</Project>
-      <Name>UsingLambdaExpression</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
